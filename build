@@ -1,0 +1,51 @@
+#!/bin/bash
+
+# Configuration
+
+MODULE_NAME="javaiterables"
+SRC_DIR="src/$MODULE_NAME"
+OUT_DIR="out"
+JAR_NAME="$MODULE_NAME.jar"
+
+cd "$(dirname "$0")"
+
+# Clean previous build
+
+echo "Cleaning previous build..."
+rm -rf "$OUT_DIR"
+mkdir -p "$OUT_DIR"
+
+# Compile module
+
+echo "Compiling Module: '$MODULE_NAME'..."
+
+javac -d "$OUT_DIR" \
+      "src/$MODULE_NAME/module-info.java" \
+      src/$MODULE_NAME/javaiterables/*.java
+
+
+if [ $? -ne 0 ]; then
+
+    echo "Error while compiling, aborting..."
+    exit 1
+
+fi
+
+# Generate .jar file
+echo "Generating jar package '$JAR_NAME'..."
+jar --create \
+    --file "$JAR_NAME" \
+    --module-version 1.0 \
+    -C "$OUT_DIR" .
+
+# Perguntar ao usuário se deseja executar o teste
+read -p "Wants to run tests 'tests/test.sh'? (s/N): " respond
+
+if [[ "$respond" == "s" || "$respond" == "S" ]]; then
+
+    echo "Executing tests..."
+    bash ./tests/test "$JAR_NAME" 
+
+fi
+
+echo "Build finished, exiting..."

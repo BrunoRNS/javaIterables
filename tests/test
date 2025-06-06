@@ -1,0 +1,20 @@
+#!/bin/bash
+
+JAR_NAME="$1"
+
+cd "$(dirname "$0")"
+
+mv ../$JAR_NAME ./$JAR_NAME
+
+echo "Compiling Test.java with $JAR_NAME..."
+javac -cp "./$JAR_NAME" ./Test.java
+
+if [ $? -ne 0 ]; then
+
+    echo "Failed compiling Test.java"
+    exit 1
+
+fi
+
+echo "Executing Tests..."
+java -cp "./$JAR_NAME:tests" Test
