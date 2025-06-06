@@ -4,10 +4,10 @@ JAR_NAME="$1"
 
 cd "$(dirname "$0")"
 
-mv ../$JAR_NAME ./$JAR_NAME
+cd ..
 
 echo "Compiling Test.java with $JAR_NAME..."
-javac -cp "./$JAR_NAME" ./Test.java
+javac -cp "$JAR_NAME" tests/Test.java
 
 if [ $? -ne 0 ]; then
 
@@ -17,4 +17,4 @@ if [ $? -ne 0 ]; then
 fi
 
 echo "Executing Tests..."
-java -cp "./$JAR_NAME:tests" Test
+java -cp "$JAR_NAME:tests" Test

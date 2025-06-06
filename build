@@ -39,9 +39,9 @@ jar --create \
     -C "$OUT_DIR" .
 
 # Perguntar ao usuário se deseja executar o teste
-read -p "Wants to run tests 'tests/test.sh'? (s/N): " respond
+read -p "Wants to run tests 'tests/test.sh'? (y/N): " respond
 
-if [[ "$respond" == "s" || "$respond" == "S" ]]; then
+if [[ "$respond" == "y" || "$respond" == "Y" ]]; then
 
     echo "Executing tests..."
     bash ./tests/test "$JAR_NAME" 
