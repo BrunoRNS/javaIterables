@@ -17,4 +17,5 @@ if [ $? -ne 0 ]; then
 fi
 
 echo "Executing Tests..."
+
 java -cp "$JAR_NAME:tests" Test

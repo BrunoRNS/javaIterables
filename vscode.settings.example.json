@@ -1,0 +1,10 @@
+{
+    "java.dependency.packagePresentation": "hierarchical",
+    "java.project.sourcePaths": [
+        "src/javaiterables",
+        "tests"
+    ],
+    "java.project.referencedLibraries": [
+        "javaiterables.jar"
+    ]
+}

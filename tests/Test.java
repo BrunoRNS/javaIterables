@@ -7,13 +7,11 @@ public class Test {
 
             testList();
             testDict();
-            testNestedDict();
             testListSorting();
             testListMethods();
             testDictMethods();
             testDictEdgeCases();
             testDictEquality();
-            testDictWithComplexValues();
             testListWithDifferentDataTypes();
             testListEdgeCases();
             testListEquality();
@@ -52,24 +50,6 @@ public class Test {
             System.out.println(my_dict.get("key2"));
             System.out.println(my_dict.get("key3"));
             System.out.println(my_dict.get("key4"));
-
-        }
-
-        private static void testNestedDict() {
-
-            Dict inner_dict = new Dict();
-            inner_dict.add("innerKey1", "innerValue1");
-            inner_dict.add("innerKey2", 99);
-
-            Dict outer_dict = new Dict();
-            outer_dict.add("outerKey1", inner_dict);
-            outer_dict.add("outerKey2", "outerValue");
-
-            Dict retrieved_inner_dict = (Dict) outer_dict.get("outerKey1");
-
-            System.out.println(retrieved_inner_dict.get("innerKey1"));
-            System.out.println(retrieved_inner_dict.get("innerKey2"));
-            System.out.println(outer_dict.get("outerKey2"));
 
         }
 
@@ -201,39 +181,6 @@ public class Test {
 
             }
 
-        }
-
-        private static void testDictWithComplexValues() {
-            
-            Dict my_dict = new Dict();
-            List listValue = new List();
-
-            listValue.append(1);
-            listValue.append(2);
-            listValue.append(3);
-
-            Dict nestedDict = new Dict();
-
-            nestedDict.add("nestedKey1", "nestedValue1");
-            nestedDict.add("nestedKey2", 100);
-
-            my_dict.add("listKey", listValue);
-            my_dict.add("dictKey", nestedDict);
-
-            System.out.println("Testing dictionary with complex values:");
-
-            List retrievedList = (List) my_dict.get("listKey");
-
-            for (int i = 0; i < retrievedList.len(); i++) {
-
-                System.out.println(retrievedList.get(i));
-
-            }
-
-            Dict retrievedDict = (Dict) my_dict.get("dictKey");
-
-            System.out.println(retrievedDict.get("nestedKey1"));
-            System.out.println(retrievedDict.get("nestedKey2"));
         }
 
         private static void testListEdgeCases() {

@@ -20,7 +20,7 @@ public class List {
 
         String value = new String();
 
-        value += String.valueOf(val);
+        value += "" + val;
 
         for (int i = 0; i < value.length(); i++) {
 
@@ -147,7 +147,7 @@ public class List {
 
                     if (i == index) { // if the current element is the one we want
 
-                        for (int j = k; this.Values.charAt(j) != '¢'; k++) { // j is the index of the current character in the element
+                        for (int j = k; this.Values.charAt(j) != '¢'; j++) { // j is the index of the current character in the element
 
                                 result += this.Values.charAt(j);
 
@@ -165,7 +165,9 @@ public class List {
         }
 
         if (result.startsWith("null")) {
+
             result = result.substring(4);
+            
         }
 
         if ("true".equals(result) || "false".equals(result)) {
@@ -334,7 +336,9 @@ public class List {
             String value = null;
 
             if (value == null) {
-                value = String.valueOf(val);
+
+                value = "" + val;
+
             }
 
             for (int i = 0; i < value.length(); i++) {
@@ -360,7 +364,7 @@ public class List {
 
         for (int i = 0; i < this.len(); i++) {
 
-            System.out.print(String.valueOf(this.get(i)) + ", ");
+            System.out.print(this.get(i) + ", ");
 
         }
 
@@ -378,7 +382,7 @@ public class List {
 
             try {
 
-                sum += (double) Double.valueOf(String.valueOf(this.get(i)));
+                sum += (double) Double.valueOf("" + this.get(i));
 
             } catch (NumberFormatException e) {
 
@@ -433,9 +437,9 @@ public class List {
 
             try {
 
-                if (((double) Double.valueOf(String.valueOf(this.get(i)))) < min) {
+                if (((double) Double.valueOf("" + this.get(i))) < min) {
 
-                    min = (double) Double.valueOf(String.valueOf(this.get(i)));
+                    min = (double) Double.valueOf("" + this.get(i));
 
                 }
 
@@ -472,9 +476,9 @@ public class List {
 
             try {
 
-                if (((double) Double.valueOf(String.valueOf(this.get(i)))) > max) {
+                if (((double) Double.valueOf("" + this.get(i))) > max) {
 
-                    max = (double) Double.valueOf(String.valueOf(this.get(i)));
+                    max = (double) Double.valueOf("" + this.get(i));
 
                 }
 

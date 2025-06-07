@@ -20,10 +20,12 @@ public class Dict {
 
         int index = 0;
 
-        for (String Key: (String[]) this.keys.arrayIterate()) {
+        for (Object Key: this.keys.arrayIterate()) {
 
-            if (Key.equals(key)) {
+            if (key.equals(Key + "")) {
+
                 break;
+
             }
 
             index++;
@@ -47,9 +49,9 @@ public class Dict {
 
         int index = 0;
 
-        for (String Value: (String[]) this.values.arrayIterate()) {
+        for (Object Value: this.values.arrayIterate()) {
 
-            if (Value.equals(value)) {
+            if (value.equals(Value)) {
                 break;
             }
 
@@ -59,7 +61,7 @@ public class Dict {
 
         if (!(this.values.get(index).equals(value))) {
 
-            System.err.printf("There's no value with the name %s in the Dict", String.valueOf(value));
+            System.err.printf("There's no value with the name %s in the Dict", (String) value);
             throw new NoSuchElementException();
 
         } else {
@@ -113,9 +115,9 @@ public class Dict {
         sortedKeys.extend(this.keys);
         sortedKeys.sort(ascending);
 
-        for (String sortedKey : (String[]) sortedKeys.arrayIterate()) {
+        for (Object sortedKey : sortedKeys.arrayIterate()) {
 
-            localValues.append(this.get(sortedKey));
+            localValues.append(this.get("" + sortedKey));
 
         }
 
