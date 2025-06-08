@@ -45,71 +45,55 @@ public class List {
 
     }
 
-    public void remove(int index) {
+public void remove(int index) {
 
-        if (index < 0) {
+    if (index < 0) {
 
-            System.err.println("List index cannot be negative");
+        System.err.println("List index cannot be negative");
+        throw new IndexOutOfBoundsException();
 
-            throw new IndexOutOfBoundsException();
+    } else if (index >= this.len()) {
 
-        } else if (index > this.len() - 1) {
+        System.err.println("List index out of range");
+        throw new IndexOutOfBoundsException();
 
-            System.err.println("List index out of range");
+    } else {
 
-            throw new IndexOutOfBoundsException();
+        int i = -1;
+        int start = -1;
+        int end = -1;
 
-        } else {
+        for (int k = 0; k < this.Values.length(); k++) {
 
-            int i = 0;
+            if (this.Values.charAt(k) == '¢') {
 
-            for (int k = 1; k < this.Values.length(); k++) {
-
-                if (this.Values.charAt(k - 1) == '¢') {
+                    i++;
 
                     if (i == index) {
 
-                        int j = 0;
+                        start = k;
 
-                        j += k;
+                    } else if (i == index + 1) {
 
-                        while (true) {
-
-                            if (this.Values.charAt(j) == '¢') {
-
-                                if ( this.Values.charAt(j) == this.Values.charAt(this.Values.length() - 1) ) {
-
-                                    this.Values = this.Values.substring(0, j);
-
-                                } else {
-
-                                    this.Values = this.Values.substring(0, j) + this.Values.substring(j + 1);
-
-                                }
-
-                                break;
-
-                            } else { 
-
-                                this.Values = this.Values.substring(0, j) + this.Values.substring(j + 1);
-
-                            }
-
-                            j++;
-
-                        }
-
-                        this.Index--;
-
+                        end = k;
                         break;
 
-                    } else {
-
-                        i++;
-
                     }
+
                 }
+
             }
+
+            if (end == -1) {
+
+                end = this.Values.length();
+
+            }
+
+
+            this.Values = this.Values.substring(0, start) + this.Values.substring(end);
+
+            this.Index--;
         }
     }
 
@@ -164,18 +148,13 @@ public class List {
             }
         }
 
-        if (result.startsWith("null")) {
-
-            result = result.substring(4);
-            
-        }
-
         if ("true".equals(result) || "false".equals(result)) {
             
             return Boolean.valueOf(result);
         }
 
         try {
+            
             return Integer.valueOf(result);
 
         } catch (NumberFormatException e) {

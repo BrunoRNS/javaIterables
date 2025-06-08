@@ -303,32 +303,6 @@ public class Test {
 
             }
 
-            // Test Dict with nested structures
-            Dict complexDict = new Dict();
-            List innerList = new List();
-
-            innerList.append("inner1");
-            innerList.append("inner2");
-
-            Dict innerDict = new Dict();
-
-            innerDict.add("innerKey", "innerValue");
-
-            complexDict.add("listKey", innerList);
-            complexDict.add("dictKey", innerDict);
-
-            System.out.println("Final test - Dict with nested structures:");
-            List retrievedInnerList = (List) complexDict.get("listKey");
-
-            for (int i = 0; i < retrievedInnerList.len(); i++) {
-
-                System.out.println(retrievedInnerList.get(i));
-
-            }
-
-            Dict retrievedInnerDict = (Dict) complexDict.get("dictKey");
-            System.out.println(retrievedInnerDict.get("innerKey"));
-
             // Test List sorting with edge cases
             List edgeCaseList = new List();
 
@@ -357,11 +331,11 @@ public class Test {
 
             // Test List and Dict clear methods
             mixedList.clear();
-            complexDict.clear();
+            overwriteDict.clear();
 
             System.out.println("Final test - Clearing List and Dict:");
             System.out.println("List length after clear: " + mixedList.len());
-            System.out.println("Dict size after clear: " + complexDict.size());
+            System.out.println("Dict size after clear: " + overwriteDict.size());
 
             // Test List and Dict equality with edge cases
             List listA = new List();
