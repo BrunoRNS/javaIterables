@@ -2,14 +2,10 @@
 
 Welcome to **JavaIterables**, the library that brings Python-like `list` and `dict` functionality to Java! Say goodbye to boilerplate code and hello to clean, efficient data manipulation. Whether you're managing collections or building complex data structures, `List` and `Dict` have got your back.
 
----
-
 ## What Does It Do?
 
 - **`List`**: Think of it as a Java-powered `list` from Python. Append, remove, sort, reverse, and more—all with ease.
 - **`Dict`**: A key-value store that feels like Python's `dict`. Add, update, search, and sort your data like a pro.
-
----
 
 ## Why Use It?
 
@@ -18,8 +14,6 @@ Because Java deserves to be fun too! With JavaIterables, you can:
 - Write less code.
 - Handle collections like a Pythonista.
 - Impress your colleagues with clean, readable Java.
-
----
 
 ## Quick Examples
 
@@ -65,16 +59,12 @@ public class Main {
 }
 ```
 
----
-
 ## Ready-to-Use `.jar`
 
 No need to compile anything! Just grab the precompiled `javaiterables.jar` from the release section and add it to your project:
 
 1. **As a module**: Add `requires javaiterables;` to your `module-info.java`.
 2. **Without modules**: Add the `.jar` to your classpath and import the classes directly.
-
----
 
 ## Licence
 
